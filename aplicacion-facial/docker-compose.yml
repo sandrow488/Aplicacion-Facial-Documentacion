@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  facial-api:
+    build: ./microservicio_facial
+    container_name: facial_service
+    ports:
+      - "8181:5000" # Mapeo externo 8181 -> interno 5000
+    restart: always
+  db:
+    image: postgres:15-alpine
+    container_name: postgres_db
+    ports:
+      - "5433:5432" # Puerto 5433 para evitar conflictos
+    environment:
+      POSTGRES_DB: plataforma_juegos
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secretpassword
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
