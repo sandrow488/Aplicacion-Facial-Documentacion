@@ -1,0 +1,25 @@
+tudominio.duckdns.org {
+    # 1. SSL Automático, Redirección HTTP -> HTTPS y Renovación
+    reverse_proxy api_facial:8000 {
+        # Health check interno
+        health_uri /health
+        health_interval 30s
+        health_timeout 10s
+    }
+
+    # Headers de seguridad
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        X-Frame-Options "SAMEORIGIN"
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        Content-Security-Policy "default-src 'self'"
+        -Server
+    }
+
+    # Logging estructurado
+    log {
+        output file /var/log/caddy/access.log
+        format json
+    }
+}

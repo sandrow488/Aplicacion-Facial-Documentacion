@@ -1,9 +1,34 @@
+import logging
+from datetime import datetime
 from fastapi import FastAPI, File, UploadFile
 from deepface import DeepFace
 import shutil
 import os
 
+# Configurar logging estructurado
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s %(name)s %(levelname)s %(message)s'
+)
+logger = logging.getLogger(__name__)
+
 app = FastAPI()
+
+@app.get("/health")
+def health_check():
+    logger.info("Health check endpoint called")
+    return {
+        "status": "ok",
+        "message": "API de reconocimiento facial operativa",
+        "timestamp": datetime.utcnow().isoformat(),
+        "version": "1.0.0"
+    }
+
+@app.get("/ready")
+def readiness_check():
+    # Aquí puedes verificar dependencias (DB, modelos cargados, etc.)
+    logger.info("Readiness check endpoint called")
+    return {"status": "ready"}
 
 @app.post("/verify")
 async def verify_img(img1: UploadFile = File(...), img2: UploadFile = File(...)):

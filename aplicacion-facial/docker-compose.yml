@@ -1,21 +1,54 @@
 version: '3.8'
 services:
-  facial-api:
-    build: ./microservicio_facial
-    container_name: facial_service
-    ports:
-      - "8181:5000"
-    restart: always
-  db:
-    image: postgres:15-alpine
-    container_name: postgres_db
-    ports:
-      - "5433:5432"
+  api_facial:
+    image: mi-api-facial:latest
+    container_name: api_facial
+    restart: unless-stopped
     environment:
-      POSTGRES_DB: plataforma_juegos
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: secretpassword
+      - LOG_LEVEL=INFO
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - production_net
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: caddy_proxy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp" # Soporte para HTTP/3 (QUIC)
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+      - ./logs:/var/log/caddy
+    networks:
+      - production_net
+    depends_on:
+      - api_facial
+
+  uptime_kuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime_kuma
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    volumes:
+      - uptime-kuma-data:/app/data
+    networks:
+      - production_net
+
 volumes:
-  pgdata:
+  caddy_data:
+  caddy_config:
+  uptime-kuma-data:
+
+networks:
+  production_net:
+    driver: bridge
