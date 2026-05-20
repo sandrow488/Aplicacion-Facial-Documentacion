@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Descargar código') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Validar Python') {
+            steps {
+                sh '''
+                    find . -name "*.py" -not -path "./.git/*" | while read f; do
+                        python3 -m py_compile "$f" || exit 1
+                    done
+                    echo "Todos los ficheros Python son válidos"
+                '''
+            }
+        }
+
+        stage('Desplegar') {
+            steps {
+                sh '''
+                    echo "Desplegado correctamente en $(date)"
+                '''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline completado correctamente'
+        }
+        failure {
+            echo 'Pipeline fallido'
+        }
+    }
+}
