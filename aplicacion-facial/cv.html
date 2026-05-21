@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Sandro Pegoraro Manzanedo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; color: #333; }
+        .container { max-width: 900px; margin: 40px auto; display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+        .sidebar { background: #1e3a5f; color: white; padding: 40px 25px; }
+        .foto-container { text-align: center; margin-bottom: 25px; }
+        .foto-container img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid rgba(255,255,255,0.3); }
+        .sidebar h2 { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #a8c4e0; margin: 25px 0 12px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 8px; }
+        .sidebar p { font-size: 13px; line-height: 1.7; color: #cdd9e5; }
+        .contacto-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; color: #cdd9e5; }
+        .contacto-item span.icon { font-size: 16px; }
+        .idioma { margin-bottom: 8px; }
+        .idioma strong { color: white; font-size: 13px; }
+        .idioma span { color: #a8c4e0; font-size: 12px; }
+        .skills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 5px; }
+        .skill-tag { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #cdd9e5; padding: 4px 10px; border-radius: 20px; font-size: 11px; }
+        .main { padding: 45px 40px; }
+        .main h1 { font-size: 32px; color: #1e3a5f; font-weight: 700; }
+        .main .subtitle { color: #4a7ab5; font-size: 16px; margin-top: 5px; margin-bottom: 35px; }
+        .section { margin-bottom: 35px; }
+        .section h2 { font-size: 18px; color: #1e3a5f; border-bottom: 2px solid #4a7ab5; padding-bottom: 8px; margin-bottom: 20px; }
+        .exp-item { margin-bottom: 20px; }
+        .exp-item h3 { font-size: 14px; color: #4a7ab5; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .exp-item p { font-size: 13px; color: #555; line-height: 1.7; margin-top: 6px; }
+        .edu-item { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+        .edu-item h3 { font-size: 13px; font-weight: 700; color: #4a7ab5; text-transform: uppercase; }
+        .edu-item p { font-size: 12px; color: #777; margin-top: 2px; }
+        .edu-item .fecha { font-size: 12px; color: #999; white-space: nowrap; margin-left: 15px; }
+        .sobre-mi { background: #f8f9fc; border-left: 4px solid #4a7ab5; padding: 15px 20px; border-radius: 0 8px 8px 0; font-size: 13px; color: #555; line-height: 1.8; margin-bottom: 35px; }
+        .imagekit-badge { font-size: 10px; color: #999; text-align: center; margin-top: 30px; }
+        .imagekit-badge a { color: #4a7ab5; text-decoration: none; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="sidebar">
+        <div class="foto-container">
+            <img src="https://ik.imagekit.io/to8lntuj8/default-image.jpg?tr=w-150,h-150,c-maintain_ratio,f-webp,q-80" alt="Foto de Sandro Pegoraro">
+        </div>
+
+        <h2>Contacto</h2>
+        <div class="contacto-item"><span class="icon">📞</span> +34 622 41 92 18</div>
+        <div class="contacto-item"><span class="icon">✉️</span> sandropegman@monlau.com</div>
+        <div class="contacto-item"><span class="icon">📍</span> Barcelona, España</div>
+
+        <h2>Idiomas</h2>
+        <div class="idioma"><strong>Castellano y catalán</strong><br><span>Nativo</span></div>
+        <div class="idioma"><strong>Inglés</strong><br><span>Nivel medio</span></div>
+
+        <h2>Lenguajes</h2>
+        <div class="skills">
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">HTML</span>
+            <span class="skill-tag">CSS</span>
+            <span class="skill-tag">Vue</span>
+            <span class="skill-tag">PHP</span>
+            <span class="skill-tag">React</span>
+        </div>
+
+        <h2>Sistemas</h2>
+        <div class="skills">
+            <span class="skill-tag">Windows</span>
+            <span class="skill-tag">Linux</span>
+        </div>
+
+        <h2>Aptitudes</h2>
+        <p>Responsable, puntual, amable y siempre intento ayudar a mis compañeros.</p>
+
+        <div class="imagekit-badge">
+            Foto servida desde <a href="https://imagekit.io" target="_blank">ImageKit CDN</a> en formato WebP
+        </div>
+    </div>
+
+    <div class="main">
+        <h1>Sandro Pegoraro Manzanedo</h1>
+        <p class="subtitle">Estudiante de Desarrollo de Aplicaciones Web</p>
+
+        <div class="sobre-mi">
+            Apasionado de la informática, me defino como una persona con ganas de aprender más sobre la informática.
+        </div>
+
+        <div class="section">
+            <h2>Experiencia</h2>
+            <div class="exp-item">
+                <h3>Soporte Técnico | Escola Baró de Viver</h3>
+                <p>Brindé asistencia técnica a docentes y personal, resolviendo incidencias de hardware y software. Gestioné el inventario de equipos y materiales tecnológicos, optimizando su control y disponibilidad.</p>
+            </div>
+            <div class="exp-item">
+                <h3>Taller de Hardware | Centro de Estudios Monlau</h3>
+                <p>Impartición de taller de hardware sobre sistema y elementos de un sistema informático con una duración de 6 horas de preparación y 4 horas de impartición.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Datos académicos</h2>
+            <div class="edu-item">
+                <div>
+                    <h3>Desarrollo de Aplicaciones Web (DAW)</h3>
+                    <p>Centro de Estudios Monlau</p>
+                </div>
+                <span class="fecha">2024 - Act.</span>
+            </div>
+            <div class="edu-item">
+                <div>
+                    <h3>Sistemas Microinformáticos y Redes</h3>
+                    <p>Centro de Estudios Monlau</p>
+                </div>
+                <span class="fecha">2022 - 2024</span>
+            </div>
+            <div class="edu-item">
+                <div>
+                    <h3>Educación Secundaria Obligatoria</h3>
+                    <p>Centro de Estudios Monlau</p>
+                </div>
+                <span class="fecha">2018 - 2022</span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
